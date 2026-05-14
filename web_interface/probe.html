@@ -1,0 +1,145 @@
+<!--- This software is licensed under the MIT License: https://github.com/spacehuhntech/esp8266_deauther -->
+
+<!Doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.8, minimal-ui">
+	<meta name="theme-color" content="#36393E">
+
+	<meta name="description" content="Wifi pen-testing device">
+	
+	<title> 𝓕𝓵𝓸𝓸𝓭 🌊</title>
+	<meta name="theme-color" content="#00adb5">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="𝓕𝓵𝓸𝓸𝓭 🌊">
+    
+    <meta name="mobile-web-app-capable" content="yes">
+	
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/site.js"></script>
+	<script src="js/probe.js"></script>
+</head>
+
+<body onload="loadLang()">
+
+	<nav>
+		<ul class="menu">
+			<li><a href="scan.html" data-translate="scan">Scan</a></li>
+			<li><a href="ssids.html" data-translate="ssids">SSIDs</a></li>
+			<li><a href="attack.html" data-translate="attacks">Attack</a></li>
+			<li><a href="probe.html" data-translate="probe">Probe</a></li>
+			<li><a href="settings.html" data-translate="settings">Settings</a></li>
+		</ul>
+	</nav>
+
+
+	<div id="status"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="header" data-translate="scan">Probe</h1>
+
+				<button id=scanZero onclick="scan(0)">Probe</button>
+				<button id=RButton onclick="load()" data-translate="reload" class="right">Reload</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label for="ch" data-translate="channel">Channel</label>
+			</div>
+			<div class="col-6">
+				<select id="ch" name="ch">
+					<option value="all" data-translate="all">All</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label data-translate="station_scan_time"> Scan Time</label>
+			</div>
+				<div class="col-6">
+					
+						<input type="number" value="15" id="scanTime">s
+						<span id="countdownDisplay" class="right" style="font-weight: bold; margin-right: 30px;"></span>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<p>
+					<span class="red" data-translate="info_span">INFO: </span><br>
+					<span data-translate="scan_info">
+						- When you click on the probe button wait until the timer hits 0 and the  blue LED on your board turns off.<br>
+						- The web interface will disconnect during a probe scan and you will have to manually 
+						reconnect to the device hotspot and click on reload!<br>
+					</span>
+					<span data-translate="info_disclaimer">In case of an unexpected error, please just reload the site.</span>
+				</p>
+
+
+				
+				
+				<hr>
+
+				<h2><span>Device  Points</span>: <span id="apNum"></span></h2>
+				<table id="apTable">
+					    <thead>
+					        <tr>
+					            <th class='id'></th>
+					            <th class='mac'>MAC</th>
+					            <th class='ssid'>SSID</th>
+					            <th class='ch'>Ch</th>
+					            <th class='rssi'>RSSI</th>
+					            <th class='count'>Count</th>
+					            <th class='vendor'>Vendor</th>
+					            <th class='selectColumn'></th>
+					            <th class='remove'></th>
+					        </tr>
+					    </thead>
+   					<tbody></tbody>
+				</table>
+			<!-- 	<button onclick="selectAllProbes(true)" data-translate="select_all">select all</button>
+				<button onclick="selectAllProbes(false)" data-translate="deselect_all">deselect all</button>
+				<button onclick="removeAllProbes()" class="red" data-translate="remove_all">remove all</button>
+ -->
+				<button onclick="selectAllProbes(true)">Select All</button>
+				<button onclick="selectAllProbes(false)">Deselect All</button>
+				<button onclick="removeSelectedProbes()">Remove Selected</button>
+				<button onclick="removeAllProbes()" class="red">Remove All</button>
+
+
+				<hr>
+
+
+			</div>
+		</div>
+	</div>
+	<footer>
+		<span id="version">𝓥𝓮𝓻𝓼𝓲𝓸𝓷 1.0</span>
+		<br>
+		<br>
+		<a href="info.html">𝓒𝓻𝓮𝓭𝓲𝓽𝓼</a>
+	</footer>
+</body>
+
+</html>
+
